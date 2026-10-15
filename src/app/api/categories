@@ -1,0 +1,23 @@
+import { NextResponse } from 'next/server';
+// Importa tu cliente de base de datos (ej. sqlite-cloud)
+
+export async function GET() {
+  try {
+    // Ejemplo de consulta para listar categorías
+    // const categories = await db.sql`SELECT * FROM categories ORDER BY name ASC;`;
+    return NextResponse.json({ success: true, data: [] });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const { name, description } = await request.json();
+    // Ejemplo de inserción
+    // await db.sql`INSERT INTO categories (name, description) VALUES (${name}, ${description});`;
+    return NextResponse.json({ success: true, message: 'Categoría creada con éxito' });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
